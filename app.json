@@ -13,8 +13,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1a5276"
       },
       "package": "com.exon.edu"
     },
@@ -35,6 +35,7 @@
       "eas": {
         "projectId": "39825958-e727-4e51-b88d-6525aa5bd30a"
       }
-    }
+    },
+    "icon": "./assets/icon.png"
   }
 }
