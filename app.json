@@ -29,6 +29,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "owner": "aljallad2025",
+    "extra": {
+      "eas": {
+        "projectId": "39825958-e727-4e51-b88d-6525aa5bd30a"
+      }
     }
   }
 }
