@@ -8,16 +8,15 @@ import { useRouter, useSegments } from 'expo-router';
 function AuthGate({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const segments = useSegments();
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session }, error }) => {
-      if (error) setError(error.message);
+    supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setLoading(false);
-    });
+    }).catch(() => setLoading(false));
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
@@ -34,12 +33,6 @@ function AuthGate({ children }: { children: React.ReactNode }) {
   if (loading) return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1a5276' }}>
       <ActivityIndicator size="large" color="#fff" />
-    </View>
-  );
-
-  if (error) return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#1a5276', padding: 20 }}>
-      <Text style={{ color: '#fff', fontSize: 16, textAlign: 'center' }}>{error}</Text>
     </View>
   );
 
